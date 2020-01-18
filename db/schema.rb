@@ -10,15 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_18_180155) do
+ActiveRecord::Schema.define(version: 2020_01_18_181913) do
 
-  create_table "events", force: :cascade do |t|
-    t.string "title"
-    t.string "type"
-    t.date "event_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "events" because of following StandardError
+#   Unknown type 'association' for column 'user'
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
