@@ -1,0 +1,10 @@
+<h1>Photo</h1>
+
+<%= form_tag(event_photo_path, method: :get) do %>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<% @photos.each do |photo| %>
+  <%= image_tag(photo.urls.regular) %>
+<% end %>

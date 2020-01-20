@@ -1,13 +1,12 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :search_result, only: [:index]
+  before_action :search_result, only: [:photo]
 
   # GET /events
   # GET /events.json
   def index
     @events = current_user.events
-    @photos = @result
   end
 
   # GET /events/1
@@ -22,6 +21,10 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+  end
+
+  def photo
+    @photos = @result
   end
 
   # POST /events
@@ -73,6 +76,8 @@ class EventsController < ApplicationController
     def search_result
       if params[:search] != nil
         @result = Unsplash::Photo.search(params[:search])
+      else 
+        @result = []
       end
     end 
 
