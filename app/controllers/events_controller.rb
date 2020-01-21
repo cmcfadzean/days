@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :search_result, only: [:photo]
+  before_action :search_result, only: [:edit]
 
   # GET /events
   # GET /events.json
@@ -21,6 +21,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @photos = @result
   end
 
   def photo

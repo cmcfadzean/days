@@ -1,3 +1,8 @@
+<%= form_tag( edit_event_path(event), method: :get) do %>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
 <%= form_with(model: event, local: true) do |form| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
@@ -25,6 +30,10 @@
     <%= form.label :event_date %>
     <%= form.date_select :event_date %>
   </div>
+
+  <% @photos.each do |photo| %>
+    <%= image_tag(photo.urls.regular) %>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
