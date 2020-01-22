@@ -1,0 +1,11 @@
+html {
+  background: #fff;
+}
+.gram {
+  &-body {
+    padding: gram-spacing();
+    margin: 0 auto;
+    width: 420px;
+    max-width: 100%;
+  }
+}

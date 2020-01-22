@@ -1,8 +1,3 @@
-<%= form_tag( edit_event_path(event), method: :get) do %>
-  <%= text_field_tag(:search, params[:search]) %>
-  <%= submit_tag 'Search' %>
-<% end %>
-
 <%= form_with(model: event, local: true) do |form| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
@@ -16,26 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :type %>
-    <%= form.select :type, options_for_select([["Select Type...",""],"Personal", "Work", "Relationship"]) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :event_date %>
-    <%= form.date_select :event_date %>
-  </div>
+  <%= form.label :photo do %>
+    <%= form.radio_button :photo, "" %>
+    No Photo
+  <% end %>
 
   <% @photos.each do |photo| %>
-    <%= image_tag(photo.urls.regular) %>
+    <%= form.label :photo, class: "gram-event__label" do %>
+      <%= form.radio_button :photo, photo.urls.regular %>
+      <%= image_tag(photo.urls.regular, class: "gram-event__photo") %>
+    <% end %>
   <% end %>
+
+  <div class="field">
+    <%= form.text_field :title %>
+  </div><br>
+
+  <div class="field">
+    <%= form.select :bucket, options_for_select([["Select Type...",""],"Personal", "Work", "Relationship"]) %>
+  </div><br>
+
+  <div class="field">
+    <%= form.date_select :event_date %>
+  </div><br>
 
   <div class="actions">
     <%= form.submit %>
-  </div>
+  </div><br>
 <% end %>

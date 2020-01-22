@@ -1,0 +1,43 @@
+.gram-event {
+  display: block;
+  background: no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-bottom: gram-spacing(sm);
+  border-radius: gram-border(radius);
+  overflow: hidden;
+  &__overlay {
+    padding: gram-spacing();
+    padding-top: 250px;
+    background: rgba(#000000, .2);
+  }
+  &__bucket {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: gram-font-size(sm);
+  }
+  &__title {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: gram-font-size(2xl);
+  }
+  &__days {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: gram-font-size(lg);
+    margin-bottom: 0;
+  }
+  &__label {
+    padding: gram-spacing(xs);
+    display: inline-block;
+    width: 40%;
+  }
+  &__photo {
+    width: 100%;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}

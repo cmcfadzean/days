@@ -1,12 +1,12 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :search_result, only: [:edit]
+  before_action :search_result, only: [:edit, :new]
 
   # GET /events
   # GET /events.json
   def index
-    @events = current_user.events
+    @events = current_user.events.order(event_date: :asc)
   end
 
   # GET /events/1
@@ -17,14 +17,11 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = current_user.events.build
+    @photos = @result
   end
 
   # GET /events/1/edit
   def edit
-    @photos = @result
-  end
-
-  def photo
     @photos = @result
   end
 
@@ -84,6 +81,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :type, :event_date, :search)
+      params.require(:event).permit(:title, :bucket, :event_date, :search, :photo)
     end
 end
